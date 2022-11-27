@@ -27,7 +27,7 @@ class RecipeModel {
       'preperationTime': preperationTime,
       'ingredients': ingredients,
       'instructions': instructions,
-      'image': image ?? ''
+      'image': image == null ? '' : image!.path
     };
   }
 
@@ -39,6 +39,6 @@ class RecipeModel {
         preperationTime: map['preperationTime'],
         ingredients: map['ingredients'],
         instructions: map['instructions'],
-        image: map['image']);
+        image: map['image'] != null ? File(map['image']) : null);
   }
 }
