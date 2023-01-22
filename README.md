@@ -2,7 +2,7 @@
 A digital recipe book that allows you to store all your recipes, edit them, search in recipes and choose favourite ones. You can add the items you need to buy later in a shopping list. Dark mood is provided.
 
 
-Animated splash screen :
+# animated splash screen :
 ![Screenshot_1674392521](https://user-images.githubusercontent.com/105488402/213918595-abcca8b7-ac26-44ce-9200-da4da4a8c3bb.png)
 ![Screenshot_1674392146](https://user-images.githubusercontent.com/105488402/213918600-e887d4a6-4252-4fbe-af0e-c1cf4ac0b30c.png)
 ![Screenshot_1674392171](https://user-images.githubusercontent.com/105488402/213918604-4f
@@ -14,5 +14,5 @@ Animated splash screen :
 ![Screenshot_1674392883](https://user-images.githubusercontent.com/105488402/213918669-0ee42df9-a072-4fa2-a377-d53d68396bcd.png)
 ![Screenshot_1674392897](https://user-images.githubusercontent.com/105488402/213918682-f66723a5-bf57-434a-8e65-e59af4dc58fb.png)
 
-Your shopping list :
+# shopping list :
 ![Screenshot_1674392226](https://user-images.githubusercontent.com/105488402/213918694-302f384d-b573-47f0-903e-8ce8a19cdaf2.png)
