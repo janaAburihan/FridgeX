@@ -64,8 +64,6 @@ class MainRecipeScreen extends StatelessWidget {
               floatingActionButton: FloatingActionButton(
                 onPressed: (() async {
                   await Navigator.pushNamed(context, '/new_recipe_screen');
-                  Navigator.pushReplacementNamed(
-                      context, '/main_recipe_screen');
                 }),
                 child: const Icon(Icons.add),
               ),
