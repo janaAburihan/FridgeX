@@ -30,7 +30,7 @@ class RecipeWidget extends StatelessWidget {
           tileColor: !Provider.of<RecipeClass>(context).isDark
               ? Colors.pink[100]
               : null,
-          leading: recipeModel.image == null
+          leading: recipeModel.image == null || recipeModel.image!.path.isEmpty
               ? Container(
                   decoration: BoxDecoration(
                       color: !Provider.of<RecipeClass>(context).isDark

@@ -53,8 +53,8 @@ class ShowRecipeScreen extends StatelessWidget {
                             : null,
                         borderRadius: BorderRadius.circular(5)),
                     height: 170,
-                    //width: double.infinity,
-                    child: recipeModel.image == null
+                    width: double.infinity,
+                    child: recipeModel.image == null || recipeModel.image!.path.isEmpty
                         ? const Center(
                             child: CircleAvatar(
                             radius: 40,

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../data_repository/dbHelper.dart';
 import '../models/recipe_model.dart';
 
-class RecipeClass extends ChangeNotifier {
+class RecipeClass with ChangeNotifier {
   RecipeClass() {
     getRecipes();
   }

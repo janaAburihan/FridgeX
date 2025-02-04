@@ -22,13 +22,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [ChangeNotifierProvider<RecipeClass>(
-          create: (context) => RecipeClass(),),
-          ChangeNotifierProvider<ItemClass>(
-          create: (context) => ItemClass(),),],
-        child: const InitApp());
-    
+    return MultiProvider(providers: [
+      ChangeNotifierProvider<RecipeClass>(
+        create: (context) => RecipeClass(),
+      ),
+      ChangeNotifierProvider<ItemClass>(
+        create: (context) => ItemClass(),
+      ),
+    ], child: const InitApp());
   }
 }
 
@@ -45,8 +46,21 @@ class InitApp extends StatelessWidget {
               primarySwatch: Colors.pink,
               scaffoldBackgroundColor: Colors.pink[200],
               dialogBackgroundColor: Colors.pink[200],
-              primaryColor: Colors.pink[200]),
-      title: 'gsk',
+              primaryColor: Colors.pink[200],
+              elevatedButtonTheme: ElevatedButtonThemeData(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.pink,
+                    foregroundColor: Colors.black),
+              ),
+              appBarTheme: AppBarTheme(
+                backgroundColor: Colors.pink,
+                foregroundColor: Colors.black, 
+              ),
+              floatingActionButtonTheme: FloatingActionButtonThemeData(
+                backgroundColor: Colors.pink,
+                foregroundColor: Colors.black,
+              )
+            ),
       home: const SplashScreen(),
       routes: {
         '/favorite_recipes_screen': (context) => const FavoriteRecipesScreen(),

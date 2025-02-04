@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../data_repository/item_dbHelper.dart';
 import '../models/item_model.dart';
 
-class ItemClass extends ChangeNotifier {
+class ItemClass with ChangeNotifier {
   ItemClass() {
     getItems();
   }

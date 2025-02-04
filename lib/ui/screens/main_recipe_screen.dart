@@ -64,7 +64,6 @@ class MainRecipeScreen extends StatelessWidget {
               floatingActionButton: FloatingActionButton(
                 onPressed: (() async {
                   await Navigator.pushNamed(context, '/new_recipe_screen');
-                  // ignore: use_build_context_synchronously
                   Navigator.pushReplacementNamed(
                       context, '/main_recipe_screen');
                 }),
@@ -131,8 +130,7 @@ class MainRecipeScreen extends StatelessWidget {
                               color: Colors.black,
                             ),
                             onTap: () {
-                              Provider.of<RecipeClass>(context, listen: false)
-                                  .changeIsDark();
+                              myProvider.changeIsDark();
                               Navigator.pop(context);
                             },
                           )

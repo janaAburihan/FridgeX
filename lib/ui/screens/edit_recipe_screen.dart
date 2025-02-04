@@ -98,7 +98,7 @@ class _EditRecipeScreenState extends State<EditRecipeScreen> {
                     ],
                   ),
                   Visibility(
-                      visible: provider.image != null,
+                      visible: provider.image != null && provider.image!.path.isNotEmpty,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
