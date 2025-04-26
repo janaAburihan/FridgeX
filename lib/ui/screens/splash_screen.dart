@@ -1,6 +1,6 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'main_recipe_screen.dart';
+import 'package:recipe_book/ui/screens/home_screen.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -8,17 +8,15 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
-      splash: const CircleAvatar(
-        radius: 70,
-        backgroundColor: Colors.pink,
-        child: CircleAvatar(
-          backgroundImage: AssetImage('images/food_logo.png'),
-          radius: 40,
-        ),
+      splash: CircleAvatar(
+        backgroundColor: Color(0xFF90BFA9),
+        backgroundImage: AssetImage('images/logo.png'),
+        radius: 80,
       ),
-      nextScreen: const MainRecipeScreen(),
+      nextScreen: const HomePage(),
       splashTransition: SplashTransition.rotationTransition,
-      backgroundColor: Colors.black,
+      splashIconSize: 180,
+      backgroundColor: Color(0xFF90BFA9),
     );
   }
 }

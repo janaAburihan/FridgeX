@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_book/providers/recipe_provider.dart';
 import 'package:recipe_book/ui/screens/search_recipe_screen.dart';
+import 'package:recipe_book/ui/widgets/app_drawer.dart';
 import '../widgets/recipe_widget.dart';
 
 class MainRecipeScreen extends StatelessWidget {
@@ -22,7 +23,7 @@ class MainRecipeScreen extends StatelessWidget {
                               recipes: myProvider.allRecipes)))),
                       child: const Icon(Icons.search)),
                   PopupMenuButton(
-                    color: !myProvider.isDark ? Colors.pink[200] : null,
+                    color: !myProvider.isDark ? Color(0xFFC2DCD0) : null,
                     itemBuilder: ((context) => [
                           PopupMenuItem(
                             onTap: (() => Scaffold.of(context).openDrawer()),
@@ -67,86 +68,7 @@ class MainRecipeScreen extends StatelessWidget {
                 }),
                 child: const Icon(Icons.add),
               ),
-              drawer: Drawer(
-                backgroundColor: !myProvider.isDark ? Colors.pink[200] : null,
-                child: Column(
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      height: 200,
-                      color: !myProvider.isDark ? Colors.pink : null,
-                      child: const Center(
-                        child: CircleAvatar(
-                          backgroundImage: AssetImage('images/food_logo.png'),
-                          radius: 50,
-                        ),
-                      ),
-                    ),
-                    ListTile(
-                      title: const Text('Home'),
-                      leading: const Icon(
-                        Icons.home,
-                        color: Colors.black,
-                      ),
-                      onTap: () {
-                        Navigator.pushReplacementNamed(
-                            context, '/main_recipe_screen');
-                      },
-                    ),
-                    ListTile(
-                      title: const Text('Favorite Recipes'),
-                      leading: const Icon(
-                        Icons.favorite,
-                        color: Colors.red,
-                      ),
-                      onTap: () {
-                        Navigator.pushReplacementNamed(
-                            context, '/favorite_recipes_screen');
-                      },
-                    ),
-                    const Divider(
-                      thickness: 1,
-                    ),
-                    ListTile(
-                      title: const Text('Shopping List'),
-                      leading: const Icon(
-                        Icons.shopping_cart,
-                        color: Colors.black,
-                      ),
-                      onTap: () {
-                        Navigator.pushNamed(context, '/shopping_list_screen');
-                      },
-                    ),
-                    const Divider(
-                      thickness: 1,
-                    ),
-                    Provider.of<RecipeClass>(context).isDark
-                        ? ListTile(
-                            title: const Text('Light Mode'),
-                            leading: const Icon(
-                              Icons.light_mode_outlined,
-                              color: Colors.black,
-                            ),
-                            onTap: () {
-                              myProvider.changeIsDark();
-                              Navigator.pop(context);
-                            },
-                          )
-                        : ListTile(
-                            title: const Text('Dark Mode'),
-                            leading: const Icon(
-                              Icons.dark_mode_outlined,
-                              color: Colors.black,
-                            ),
-                            onTap: () {
-                              Provider.of<RecipeClass>(context, listen: false)
-                                  .changeIsDark();
-                              Navigator.pop(context);
-                            },
-                          ),
-                  ],
-                ),
-              ),
+              drawer: AppDrawer(),
               body: ListView.builder(
                   itemCount: myProvider.allRecipes.length,
                   itemBuilder: (context, index) {

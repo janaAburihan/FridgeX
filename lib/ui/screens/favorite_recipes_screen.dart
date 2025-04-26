@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_book/ui/screens/search_recipe_screen.dart';
+import 'package:recipe_book/ui/widgets/app_drawer.dart';
 import '../../providers/recipe_provider.dart';
 import '../widgets/recipe_widget.dart';
 
@@ -78,85 +79,7 @@ class FavoriteRecipesScreen extends StatelessWidget {
               ),
             ],
           ),
-          drawer: Drawer(
-            backgroundColor: !myProvider.isDark ? Colors.pink[200] : null,
-            child: Column(
-              children: [
-                Container(
-                  width: double.infinity,
-                  height: 200,
-                  color: !myProvider.isDark ? Colors.pink : null,
-                  child: const Center(
-                    child: CircleAvatar(
-                      backgroundImage: AssetImage('images/food_logo.png'),
-                      radius: 50,
-                    ),
-                  ),
-                ),
-                ListTile(
-                  title: const Text('Home'),
-                  leading: const Icon(
-                    Icons.home,
-                    color: Colors.black,
-                  ),
-                  onTap: () {
-                    Navigator.pushNamed(context, '/main_recipe_screen');
-                  },
-                ),
-                ListTile(
-                  title: const Text('Favorite Recipes'),
-                  leading: const Icon(
-                    Icons.favorite,
-                    color: Colors.red,
-                  ),
-                  onTap: () {
-                    Navigator.pushNamed(context, '/favorite_recipes_screen');
-                  },
-                ),
-                const Divider(
-                  thickness: 1,
-                ),
-                ListTile(
-                  title: const Text('Shopping List'),
-                  leading: const Icon(
-                    Icons.shopping_cart,
-                    color: Colors.black,
-                  ),
-                  onTap: () {
-                    Navigator.pushNamed(context, '/shopping_list_screen');
-                  },
-                ),
-                const Divider(
-                  thickness: 1,
-                ),
-                Provider.of<RecipeClass>(context).isDark
-                    ? ListTile(
-                        title: const Text('Light Mode'),
-                        leading: const Icon(
-                          Icons.light_mode_outlined,
-                          color: Colors.black,
-                        ),
-                        onTap: () {
-                          Provider.of<RecipeClass>(context, listen: false)
-                              .changeIsDark();
-                          Navigator.pop(context);
-                        },
-                      )
-                    : ListTile(
-                        title: const Text('Dark Mode'),
-                        leading: const Icon(
-                          Icons.dark_mode_outlined,
-                          color: Colors.black,
-                        ),
-                        onTap: () {
-                          Provider.of<RecipeClass>(context, listen: false)
-                              .changeIsDark();
-                          Navigator.pop(context);
-                        },
-                      ),
-              ],
-            ),
-          ),
+          drawer: AppDrawer(),
           body: ListView.builder(
               itemCount: myProvider.favoriteRecipes.length,
               itemBuilder: (context, index) {

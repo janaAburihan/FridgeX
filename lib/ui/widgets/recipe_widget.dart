@@ -10,39 +10,42 @@ class RecipeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Provider.of<RecipeClass>(context).isDark;
+    const greenColor = Color(0xFF90BFA9); // Muted teal
+
     return InkWell(
-      onTap: (() {
+      onTap: () {
         Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: ((context) =>
-                    ShowRecipeScreen(recipeModel: recipeModel))));
-      }),
+          context,
+          MaterialPageRoute(
+            builder: (context) => ShowRecipeScreen(recipeModel: recipeModel),
+          ),
+        );
+      },
       child: Container(
         decoration: BoxDecoration(
-            color: !Provider.of<RecipeClass>(context).isDark
-                ? Colors.pink[100]
-                : null,
-            borderRadius: BorderRadius.circular(10)),
+          color: !isDark ? greenColor.withOpacity(0.2) : null,
+          borderRadius: BorderRadius.circular(10),
+        ),
         margin: const EdgeInsets.all(5),
         padding: const EdgeInsets.all(5),
         child: ListTile(
-          tileColor: !Provider.of<RecipeClass>(context).isDark
-              ? Colors.pink[100]
-              : null,
+          tileColor: !isDark ? greenColor.withOpacity(0.2) : null,
           leading: recipeModel.image == null || recipeModel.image!.path.isEmpty
               ? Container(
                   decoration: BoxDecoration(
-                      color: !Provider.of<RecipeClass>(context).isDark
-                          ? Colors.pink
-                          : null,
-                      borderRadius: BorderRadius.circular(8)),
+                    color: !isDark ? greenColor : null,
+                    borderRadius: BorderRadius.circular(10
+                  )),
                   height: double.infinity,
                   width: 70,
                   child: const Center(
-                      child: CircleAvatar(
-                    backgroundImage: AssetImage('images/food_logo.png'),
-                  )))
+                    child: CircleAvatar(
+                      backgroundColor: Color(0xFF90BFA9),
+                      backgroundImage: AssetImage('images/logo.png'),
+                    ),
+                  ),
+                )
               : Image.file(
                   recipeModel.image!,
                   width: 70,

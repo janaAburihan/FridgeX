@@ -18,7 +18,14 @@ class ItemWidget extends StatelessWidget {
         onChanged: (bool? value) {
           Provider.of<ItemClass>(context, listen: false).updateItem(itemModel);
         },
-        title: Text(itemModel.name),
+        title: Text(
+          itemModel.name,
+          style: TextStyle(
+            decoration: itemModel.isComplete
+                ? TextDecoration.lineThrough
+                : TextDecoration.none,
+          ),
+        ),
         secondary: InkWell(
           child: const Icon(Icons.delete_outlined),
           onTap: () {

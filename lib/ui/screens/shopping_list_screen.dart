@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:recipe_book/ui/widgets/app_drawer.dart';
 
 import '../../providers/item_provider.dart';
 import '../../providers/recipe_provider.dart';
@@ -20,83 +21,7 @@ class ShoppingListScreen extends StatelessWidget {
                     child: const Icon(Icons.delete))
               ],
             ),
-            drawer: Drawer(
-              backgroundColor: Colors.pink[200],
-              child: Column(
-                children: [
-                  Container(
-                    width: double.infinity,
-                    height: 200,
-                    color: Colors.pink,
-                    child: const Center(
-                      child: CircleAvatar(
-                        backgroundImage: AssetImage('images/food_logo.png'),
-                        radius: 50,
-                      ),
-                    ),
-                  ),
-                  ListTile(
-                    title: const Text('Home'),
-                    leading: const Icon(
-                      Icons.home,
-                      color: Colors.black,
-                    ),
-                    onTap: () {
-                      Navigator.pushNamed(context, '/main_recipe_screen');
-                    },
-                  ),
-                  ListTile(
-                    title: const Text('Favorite Recipes'),
-                    leading: const Icon(
-                      Icons.favorite,
-                      color: Colors.red,
-                    ),
-                    onTap: () {
-                      Navigator.pushNamed(context, '/favorite_recipes_screen');
-                    },
-                  ),
-                  const Divider(
-                    thickness: 1,
-                  ),
-                  ListTile(
-                    title: const Text('Shopping List'),
-                    leading: const Icon(
-                      Icons.shopping_cart,
-                      color: Colors.black,
-                    ),
-                    onTap: () {
-                      Navigator.pushNamed(context, '/shopping_list_screen');
-                    },
-                  ),
-                  const Divider(
-                    thickness: 1,
-                  ),
-                  provider.isDark
-                      ? ListTile(
-                          title: const Text('Light Mode'),
-                          leading: const Icon(
-                            Icons.light_mode_outlined,
-                            color: Colors.black,
-                          ),
-                          onTap: () {
-                            provider.changeIsDark();
-                            Navigator.pop(context);
-                          },
-                        )
-                      : ListTile(
-                          title: const Text('Dark Mode'),
-                          leading: const Icon(
-                            Icons.dark_mode_outlined,
-                            color: Colors.black,
-                          ),
-                          onTap: () {
-                            provider.changeIsDark();
-                            Navigator.pop(context);
-                          },
-                        ),
-                ],
-              ),
-            ),
+            drawer: AppDrawer(),
             body: Column(
               children: [
                 Expanded(

@@ -27,6 +27,17 @@ class ItemClass with ChangeNotifier {
     getItems();
   }
 
+  void insertMultipleItems(List<String> items) {
+    for (var item in items) {
+      // Check if item exists before inserting
+      if (!allItems.any((e) => e.name.toLowerCase() == item.toLowerCase())) {
+        ItemModel itemModel = ItemModel(name: item, isComplete: false);
+        ItemDbHelper.dbHelper.insertNewItem(itemModel);
+      }
+    }
+    getItems();  // Refresh the list after adding new items
+  }
+
   updateItem(ItemModel itemModel) {
     ItemDbHelper.dbHelper.updateItem(itemModel);
     getItems();
