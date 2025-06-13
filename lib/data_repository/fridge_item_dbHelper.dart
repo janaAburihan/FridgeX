@@ -1,4 +1,4 @@
-import 'package:recipe_book/models/fridge_item_model.dart';
+import 'package:FridgeX/models/fridge_item_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 

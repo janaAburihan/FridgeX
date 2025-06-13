@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "838227296286",
+    "project_id": "fridgex-93c26",
+    "storage_bucket": "fridgex-93c26.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:838227296286:android:00e6943170a2e61f7b6e0f",
+        "android_client_info": {
+          "package_name": "com.example.FridgeX"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTC5NHBiezJNINgr5nsDCLf6Npm2I8PDE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:838227296286:android:b0ae965445cccaf17b6e0f",
+        "android_client_info": {
+          "package_name": "com.fridgex.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTC5NHBiezJNINgr5nsDCLf6Npm2I8PDE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

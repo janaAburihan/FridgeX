@@ -1,8 +1,7 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:recipe_book/ui/screens/about_screen.dart';
-import 'package:recipe_book/ui/widgets/app_drawer.dart';
+import 'package:FridgeX/ui/screens/about_screen.dart';
+import 'package:FridgeX/ui/widgets/app_drawer.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -13,16 +12,11 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('FridgeX'),
+        title: const Text('FridgeX Dashboard'),
         actions: [
           PopupMenuButton<String>(
-            color: !isDark ? Color(0xFFC2DCD0) : null,
+            color: !isDark ? const Color(0xFFC2DCD0) : null,
             itemBuilder: (BuildContext context) => [
-              PopupMenuItem<String>(
-                value: 'open_menu',
-                onTap: () => Scaffold.of(context).openDrawer(),
-                child: const Text('Open menu'),
-              ),
               PopupMenuItem<String>(
                 value: 'about',
                 onTap: () {
@@ -36,29 +30,13 @@ class HomePage extends StatelessWidget {
               PopupMenuItem<String>(
                 value: 'exit',
                 onTap: () {
-                  exit(0); // This will exit the app
+                  exit(0);
                 },
-                child: Column(
-                  children: [
-                    const Divider(
-                      color: Colors.black,
-                      thickness: 1,
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    Row(
-                      children: const [
-                        Icon(
-                          Icons.exit_to_app_outlined,
-                          color: Colors.red,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text('Exit'),
-                      ],
-                    ),
+                child: Row(
+                  children: const [
+                    Icon(Icons.exit_to_app_outlined, color: Colors.red),
+                    SizedBox(width: 10),
+                    Text('Exit'),
                   ],
                 ),
               ),
@@ -69,7 +47,7 @@ class HomePage extends StatelessWidget {
       drawer: AppDrawer(),
       body: Container(
         width: double.infinity,
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+        padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: isDark
@@ -79,58 +57,94 @@ class HomePage extends StatelessWidget {
             end: Alignment.bottomCenter,
           ),
         ),
+        child: GridView.count(
+          crossAxisCount: 2,
+          crossAxisSpacing: 20,
+          mainAxisSpacing: 20,
+          children: [
+            _buildDashboardTile(
+              context,
+              title: 'Fridge Inside View',
+              icon: Icons.photo_camera,
+              routeName: '/inside_view_screen',
+            ),
+            _buildDashboardTile(
+              context,
+              title: 'Fridge Items',
+              icon: Icons.kitchen,
+              routeName: '/food_recognition_screen',
+            ),
+            _buildDashboardTile(
+              context,
+              title: 'Recipe Suggestion',
+              icon: Icons.restaurant,
+              routeName: '/recipe_suggestion_screen',
+            ),
+            _buildDashboardTile(
+              context,
+              title: 'My Recipes',
+              icon: Icons.menu_book,
+              routeName: '/main_recipe_screen',
+            ),
+            _buildDashboardTile(
+              context,
+              title: 'Favorite Recipes',
+              icon: Icons.favorite,
+              iconColor: Colors.red,
+              routeName: '/favorite_recipes_screen',
+            ),
+            _buildDashboardTile(
+              context,
+              title: 'Shopping List',
+              icon: Icons.shopping_cart,
+              routeName: '/shopping_list_screen',
+            ),
+            _buildDashboardTile(
+              context,
+              title: 'Door Control',
+              icon: Icons.meeting_room,
+              routeName: '/door_control_screen',
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDashboardTile(BuildContext context,
+      {required String title,
+      required IconData icon,
+      Color? iconColor,
+      required String routeName}) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    return GestureDetector(
+      onTap: () => Navigator.pushNamed(context, routeName),
+      child: Container(
+        decoration: BoxDecoration(
+          color: isDark ? const Color(0xFF313232) : Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: isDark ? Colors.black45 : Colors.grey.withOpacity(0.3),
+              blurRadius: 10,
+              offset: const Offset(4, 4),
+            ),
+          ],
+        ),
+        padding: const EdgeInsets.all(16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Logo inside a circle avatar for better styling
-            CircleAvatar(
-              radius: 70,
-              backgroundColor: Colors.green.shade100,
-              child: ClipOval(
-                child: Image.asset(
-                  'images/logo.png',
-                  fit: BoxFit.cover,
-                  width: 120,
-                  height: 120,
-                ),
-              ),
-            ),
-            const SizedBox(height: 30),
+            Icon(icon, size: 40, color: iconColor ?? (isDark ? Colors.white70 : Colors.green)),
+            const SizedBox(height: 10),
             Text(
-              'Welcome to FridgeX!',
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: isDark ? Colors.white : Colors.green.shade800,
-                  ),
-            ),
-            const SizedBox(height: 16),
-            Text(
-              'Recognize your food items, get recipe suggestions,\nand control your fridge anytime, anywhere.',
+              title,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 16,
-                color: isDark ? Colors.grey[300] : Colors.grey[700],
-                height: 1.5,
-              ),
-            ),
-            const SizedBox(height: 40),
-            ElevatedButton.icon(
-              onPressed: () {
-                Navigator.pushNamed(context, '/inside_view_screen');
-              },
-              label: const Text(
-                'Start Now',
-                style: TextStyle(fontSize: 18),
-              ),
-              style: ElevatedButton.styleFrom(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
-                backgroundColor: Colors.green.shade400,
-                foregroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
+                color: isDark ? Colors.white : Colors.black87,
               ),
             ),
           ],

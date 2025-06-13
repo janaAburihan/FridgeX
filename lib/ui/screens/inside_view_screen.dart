@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:recipe_book/ui/widgets/app_drawer.dart';
+import 'package:FridgeX/ui/widgets/app_drawer.dart';
 
 class InsideViewScreen extends StatefulWidget {
   const InsideViewScreen({Key? key}) : super(key: key);
@@ -28,7 +28,7 @@ class _FridgeInsideViewScreenState extends State<InsideViewScreen> {
     });
 
     try {
-      final response = await http.get(Uri.parse('http://192.168.10.149:5000/inside-view'));
+      final response = await http.get(Uri.parse('http://192.168.10.149:5000/inside-view'));//192.168.10.149
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);

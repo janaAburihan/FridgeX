@@ -1,25 +1,63 @@
+import 'dart:convert';
+
+import 'package:FridgeX/firebase_options.dart';
+import 'package:FridgeX/ui/screens/door_control_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:recipe_book/data_repository/fridge_item_dbHelper.dart';
-import 'package:recipe_book/data_repository/item_dbHelper.dart';
-import 'package:recipe_book/providers/item_provider.dart';
-import 'package:recipe_book/ui/screens/favorite_recipes_screen.dart';
-import 'package:recipe_book/ui/screens/food_recognition_screeen.dart';
-import 'package:recipe_book/ui/screens/home_screen.dart';
-import 'package:recipe_book/ui/screens/inside_view_screen.dart';
-import 'package:recipe_book/ui/screens/main_recipe_screen.dart';
-import 'package:recipe_book/ui/screens/new_recipe_screen.dart';
-import 'package:recipe_book/providers/recipe_provider.dart';
-import 'package:recipe_book/ui/screens/recipe_suggestion_screen.dart';
-import 'package:recipe_book/ui/screens/shopping_list_screen.dart';
-import 'package:recipe_book/ui/screens/splash_screen.dart';
+import 'package:FridgeX/data_repository/fridge_item_dbHelper.dart';
+import 'package:FridgeX/data_repository/item_dbHelper.dart';
+import 'package:FridgeX/providers/item_provider.dart';
+import 'package:FridgeX/ui/screens/favorite_recipes_screen.dart';
+import 'package:FridgeX/ui/screens/food_recognition_screeen.dart';
+import 'package:FridgeX/ui/screens/home_screen.dart';
+import 'package:FridgeX/ui/screens/inside_view_screen.dart';
+import 'package:FridgeX/ui/screens/main_recipe_screen.dart';
+import 'package:FridgeX/ui/screens/new_recipe_screen.dart';
+import 'package:FridgeX/providers/recipe_provider.dart';
+import 'package:FridgeX/ui/screens/recipe_suggestion_screen.dart';
+import 'package:FridgeX/ui/screens/shopping_list_screen.dart';
+import 'package:FridgeX/ui/screens/splash_screen.dart';
 import 'data_repository/dbHelper.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:http/http.dart' as http;
+
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  print('[Background] Message received: ${message.notification?.title}');
+}
+
+Future<void> sendTokenToServer(String? token) async {
+  if (token == null) return;
+  try {
+    final response = await http.post(
+      Uri.parse("http://192.168.10.149:5000/register-device"),
+      headers: {"Content-Type": "application/json"},
+      body: jsonEncode({"fcm_token": token}),
+    );
+    print("Sent token to server: ${response.statusCode}");
+  } catch (e) {
+    print("Failed to send token: $e");
+  }
+}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
+  // Optional: Get the FCM token (use this to test or store on server)
+  final fcmToken = await FirebaseMessaging.instance.getToken();
+  sendTokenToServer(fcmToken);
+  print("FCM Token: $fcmToken");
+
+  // Ask for notification permission
+  await FirebaseMessaging.instance.requestPermission();
+
   await DbHelper.dbHelper.initDatabase();
   await ItemDbHelper.dbHelper.initDatabase();
   await FridgeItemDbHelper.dbHelper.initDatabase();
+
   runApp(const MyApp());
 }
 
@@ -103,6 +141,7 @@ class InitApp extends StatelessWidget {
           '/recipe_suggestion_screen': (context) =>
               const RecipeSuggestionScreen(),
           '/inside_view_screen': (context) => const InsideViewScreen(),
+          '/door_control_screen': (context) => const DoorControlScreen(),
           '/home_screen': (context) => const HomePage(),
         },
       ),

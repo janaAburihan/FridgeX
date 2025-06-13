@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.recipe_book">
+    package="com.example.FridgeX">
    <application
         android:requestLegacyExternalSrorage="true"
-        android:label="recipe_book"
+        android:label="FridgeX"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

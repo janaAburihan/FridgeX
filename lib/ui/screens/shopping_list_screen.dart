@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:recipe_book/ui/widgets/app_drawer.dart';
+import 'package:FridgeX/ui/widgets/app_drawer.dart';
 
 import '../../providers/item_provider.dart';
 import '../../providers/recipe_provider.dart';

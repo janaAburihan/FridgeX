@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "recipe_book" "\0"
+            VALUE "FileDescription", "FridgeX" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "recipe_book" "\0"
+            VALUE "InternalName", "FridgeX" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2022 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "recipe_book.exe" "\0"
-            VALUE "ProductName", "recipe_book" "\0"
+            VALUE "OriginalFilename", "FridgeX.exe" "\0"
+            VALUE "ProductName", "FridgeX" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

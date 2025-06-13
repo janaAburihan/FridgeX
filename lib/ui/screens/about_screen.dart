@@ -10,7 +10,7 @@ class AboutScreen extends StatelessWidget {
         title: const Text('About'),
         backgroundColor: const Color(0xFF78B298),
       ),
-      body: Padding(
+      body: Padding(                          
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Column(
