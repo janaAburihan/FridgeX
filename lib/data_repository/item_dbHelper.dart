@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
-import 'package:recipe_book/models/item_model.dart';
+import 'package:FridgeX/models/item_model.dart';
 import 'package:sqflite/sqflite.dart';
 
 class ItemDbHelper {

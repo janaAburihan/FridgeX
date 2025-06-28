@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:recipe_book/ui/widgets/app_drawer.dart';
+import 'package:FridgeX/ui/widgets/app_drawer.dart';
 
 class InsideViewScreen extends StatefulWidget {
   const InsideViewScreen({Key? key}) : super(key: key);
@@ -92,7 +92,7 @@ class _FridgeInsideViewScreenState extends State<InsideViewScreen> {
                             children: [
                               SizedBox(
                                 width: MediaQuery.of(context).size.width, // Full screen width
-                                height: MediaQuery.of(context).size.height * 0.7, // 70% of screen height
+                                //height: MediaQuery.of(context).size.height * 0.7, // 70% of screen height
                                 child: Image.memory(
                                   base64Decode(_fridgeImageBase64!),
                                   fit: BoxFit.cover,

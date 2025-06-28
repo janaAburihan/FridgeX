@@ -1,6 +1,6 @@
 {
-    "name": "recipe_book",
-    "short_name": "recipe_book",
+    "name": "FridgeX",
+    "short_name": "FridgeX",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

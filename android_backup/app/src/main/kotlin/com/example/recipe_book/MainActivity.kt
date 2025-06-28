@@ -1,4 +1,4 @@
-package com.example.recipe_book
+package com.example.FridgeX
 
 import io.flutter.embedding.android.FlutterActivity
 

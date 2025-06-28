@@ -57,4 +57,9 @@ class RecipeClass with ChangeNotifier {
     DbHelper.dbHelper.deleteRecipe(recipeModel);
     getRecipes();
   }
+
+  void insertRecipe(RecipeModel recipeModel) {
+    DbHelper.dbHelper.insertNewRecipe(recipeModel);
+    getRecipes();
+  }
 }

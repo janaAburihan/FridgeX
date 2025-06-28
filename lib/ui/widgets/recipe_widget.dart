@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:recipe_book/providers/recipe_provider.dart';
-import 'package:recipe_book/ui/screens/show_recipe_screen.dart';
+import 'package:FridgeX/providers/recipe_provider.dart';
+import 'package:FridgeX/ui/screens/show_recipe_screen.dart';
 import '../../models/recipe_model.dart';
 
 class RecipeWidget extends StatelessWidget {

@@ -21,11 +21,11 @@ plugins {
 }
 
 android {
-    namespace "com.example.recipe_book" // ✅ Required for AGP 8.0+
+    namespace "com.example.FridgeX" // ✅ Required for AGP 8.0+
     compileSdkVersion 34 // Or latest stable version
 
     defaultConfig {
-        applicationId "com.example.recipe_book"
+        applicationId "com.example.FridgeX"
         minSdkVersion 21
         targetSdkVersion 34
         versionCode flutterVersionCode.toInteger()

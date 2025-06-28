@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
-import 'package:recipe_book/data_repository/fridge_item_dbHelper.dart';
-import 'package:recipe_book/providers/recipe_provider.dart';
-import 'package:recipe_book/models/fridge_item_model.dart';
-import 'package:recipe_book/ui/widgets/app_drawer.dart';
+import 'package:FridgeX/data_repository/fridge_item_dbHelper.dart';
+import 'package:FridgeX/providers/recipe_provider.dart';
+import 'package:FridgeX/models/fridge_item_model.dart';
+import 'package:FridgeX/ui/widgets/app_drawer.dart';
 
 class FoodRecognitionScreen extends StatefulWidget {
   const FoodRecognitionScreen({super.key});
@@ -39,7 +39,7 @@ class _FridgeScreenState extends State<FoodRecognitionScreen> {
   Future<void> fetchFridgeItems() async {
     setState(() => isLoading = true);
     try {
-      final response = await http.get(Uri.parse("http://192.168.10.149:5000/food_recognition"));
+      final response = await http.get(Uri.parse("http://192.168.10.149:5000/food-recognition"));
       final data = json.decode(response.body);
 
       if (data["status"] == "success") {

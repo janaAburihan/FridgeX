@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_book/models/recipe_model.dart';
-import 'package:recipe_book/ui/widgets/recipe_widget.dart';
+import 'package:FridgeX/models/recipe_model.dart';
+import 'package:FridgeX/ui/widgets/recipe_widget.dart';
 
 // ignore: must_be_immutable
 class SearchRecipeScreen extends StatefulWidget {
