@@ -28,7 +28,7 @@ class _FridgeInsideViewScreenState extends State<InsideViewScreen> {
     });
 
     try {
-      final response = await http.get(Uri.parse('http://192.168.10.149:5000/inside-view'));//192.168.10.149
+      final response = await http.get(Uri.parse('http://192.168.10.149:5000/inside-view'));
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
@@ -92,7 +92,7 @@ class _FridgeInsideViewScreenState extends State<InsideViewScreen> {
                             children: [
                               SizedBox(
                                 width: MediaQuery.of(context).size.width, // Full screen width
-                                height: MediaQuery.of(context).size.height * 0.7, // 70% of screen height
+                                //height: MediaQuery.of(context).size.height * 0.7, // 70% of screen height
                                 child: Image.memory(
                                   base64Decode(_fridgeImageBase64!),
                                   fit: BoxFit.cover,
